@@ -1,0 +1,44 @@
+{
+  "name": "handful-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node -r esm server.js",
+    "dev": "nodemon -r esm server.js",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags && rm -rf build/temp"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "sequelize-cli": "^5.5.1"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "log-timestamp": "^0.3.0",
+    "moment": "^2.26.0",
+    "pg": "^7.18.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.11"
+  }
+}
