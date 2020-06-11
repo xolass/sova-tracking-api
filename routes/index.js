@@ -1,13 +1,15 @@
 import express from 'express';
 
+import ApiRouter from './ApiRoutes';
+import AppRouter from './AppRoutes';
 import Authentication from './Authentication';
-// import Locations from './Locations';
+import Session from '../middleware/SessionMiddleware';
 
 const router = express.Router();
 
+router.use(Authentication);
 
-router.use('/', Authentication);
-
-// router.use('/locations', Locations);
+router.use('/app', [], AppRouter);
+router.use('/', [Session], ApiRouter);
 
 export default router;

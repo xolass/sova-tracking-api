@@ -4,11 +4,11 @@ import Messages from './MessageDicitionary';
 
 const padLeft2 = (number) => number.toString().padStart(2, 0);
 
-const getStatusCode = (messageCode) => messageCode.splice(0, 3);
+const getStatusCode = (messageCode) => messageCode.slice(0, 3);
 
 const log = (messageCode) => {
   const now = moment();
-  const path = `${__dirname}/../logs/${now.get('year')}/${padLeft2(now.get('month')) + 1}/${padLeft2(now.get('date'))}`;
+  const path = `${__dirname}/../logs/${now.get('year')}/${padLeft2(1 + now.get('month'))}/${padLeft2(now.get('date'))}`;
   fs.mkdirSync(path, { recursive: true });
   fs.appendFileSync(
     `${path}/${padLeft2(now.get('hour'))}h00.txt`,
@@ -17,15 +17,10 @@ const log = (messageCode) => {
 };
 
 
-export const defaultSuccess = (res, messageCode) => {
-  log(messageCode);
-  return res.status(getStatusCode(messageCode)).json({
-    status: 'ok',
-    messageCode,
-    message: Messages[messageCode],
-  });
-};
-
+export const defaultSuccess = (res, responseData, status = 200) => res.status(status).json({
+  status: 'ok',
+  data: responseData,
+});
 export const defaultError = (res, messageCode) => {
   log(messageCode);
   return res.status(getStatusCode(messageCode)).json({

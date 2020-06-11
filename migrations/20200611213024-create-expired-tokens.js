@@ -1,22 +1,15 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('Users', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('ExpiredTokens', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    username: {
-      type: Sequelize.STRING,
+    expiredToken: {
+      allowNull: false,
       unique: true,
-      allowNull: false,
-    },
-    password: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    token: {
       type: Sequelize.STRING,
     },
     createdAt: {
@@ -31,5 +24,5 @@ module.exports = {
       type: Sequelize.DATE,
     },
   }),
-  down: (queryInterface) => queryInterface.dropTable('Users'),
+  down: (queryInterface) => queryInterface.dropTable('ExpiredTokens'),
 };

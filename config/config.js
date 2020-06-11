@@ -15,11 +15,11 @@ module.exports = {
 
   },
   test: {
-    username: process.env.DB_NAME_TEST,
-    password: process.env.DB_HOST_TEST,
-    database: process.env.DB_USERNAME_TEST,
+    username: process.env.DB_USERNAME_TEST,
+    password: process.env.DB_PASSWORD_TEST,
+    database: process.env.DB_NAME_TEST,
+    host: process.env.DB_HOST_TEST,
     port: '5432',
-    host: process.env.DB_PASSWORD_TEST,
     dialect: 'postgres',
     logging: false,
     define: {
@@ -28,10 +28,10 @@ module.exports = {
 
   },
   production: {
-    username: process.env.DB_NAME_PRODUCTION,
-    password: process.env.DB_HOST_PRODUCTION,
-    database: process.env.DB_USERNAME_PRODUCTION,
-    host: process.env.DB_PASSWORD_PRODUCTION,
+    username: process.env.DB_USERNAME_PRODUCTION,
+    password: process.env.DB_PASSWORD_PRODUCTION,
+    database: process.env.DB_NAME_PRODUCTION,
+    host: process.env.DB_HOST_PRODUCTION,
     port: '5432',
     dialect: 'postgres',
     logging: false,
