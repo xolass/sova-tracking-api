@@ -52,6 +52,7 @@ export default async (req, res) => {
   const {
     username, password, saveLogin,
   } = req.body;
+
   const token = req.headers.authorization;
 
   try {
