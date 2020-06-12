@@ -1,21 +1,14 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('Locations', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('Devices', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    coordinates: {
-      type: Sequelize.GEOMETRY('POINT', 4326),
-    },
-    deviceId: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: 'Devices',
-        key: 'id',
-      },
+    deviceMac: {
+      type: Sequelize.STRING,
     },
     createdAt: {
       allowNull: false,
@@ -29,5 +22,5 @@ module.exports = {
       type: Sequelize.DATE,
     },
   }),
-  down: (queryInterface) => queryInterface.dropTable('Locations'),
+  down: (queryInterface) => queryInterface.dropTable('Devices'),
 };
