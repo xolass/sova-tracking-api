@@ -1,4 +1,4 @@
-import { getSocket } from './socketManager';
+import getSocket from './helpers';
 
 export const socketSendInfo = (socketId, message, description) => {
   const socket = getSocket(socketId);
@@ -12,7 +12,7 @@ export const socketSendInfo = (socketId, message, description) => {
 export const socketSendError = (socketId, message, description) => {
   const socket = getSocket(socketId);
 
-  socket.emit('error', { // change, error is a reserved word
+  socket.emit('fail', {
     message,
     description,
   });

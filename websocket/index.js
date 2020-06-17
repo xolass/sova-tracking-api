@@ -5,11 +5,10 @@ import express from 'express';
 const wsApp = express();
 const server = http.createServer(wsApp);
 
-export const socketer = io(server);
+const wsPort = process.env.WSPORT || 6970;
 
-export const InitWebSocket = () => {
-  const wsPort = process.env.WSPORT || 6970;
-  server.listen(wsPort, () => {
-    console.log(`listening on socket(${wsPort})`);
-  });
-};
+server.listen(wsPort, () => {
+  console.log(`listening on socket(${wsPort})`);
+});
+
+export default io(server);
