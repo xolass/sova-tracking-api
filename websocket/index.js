@@ -11,4 +11,21 @@ server.listen(wsPort, () => {
   console.log(`listening on socket(${wsPort})`);
 });
 
-export default io(server);
+const socketIO = io(server);
+
+socketIO.on('connection', (socket) => {
+
+  console.log(`Uma conexão foi estabelecida. ID: ${socket.id}`);
+
+  setTimeout(function() {
+
+    socket.emit('welcome', { server: 'Bem vindo ao servidor SOVA!'});
+
+    socket.on('disconnect', () => console.log(`Uma conexão foi interrompida. ID: ${socket.id}`))
+    
+    socket.on('location', (data) => { console.log(data) })
+
+ }, 4000);
+})
+
+export default socketIO;
